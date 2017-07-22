@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Game</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/game_style.css">
+	</head>
+
+	<body onload="init()">
+
+		<div class="container">
+		
+			<header class="game_menu">
+			  <input class="menu-btn" type="checkbox" id="menu-btn" />
+			  <label class="menu-icon" for="menu-btn"><span>Menu</span></label>
+			  <ul class="menu">
+				<li><a href="game.html">New game</a></li>
+				<li><a href="#">Save</a></li>
+				<li><a href="#">Load</a></li>
+				<li><a href="../index.html">Exit</a></li>
+			  </ul>
+			</header>
+			
+			<header class="game_menu" id="game_menu2">
+			  <input class="menu-btn2" type="checkbox" id="menu-btn2" />
+			  <label class="menu-icon2" for="menu-btn2"><span>Options</span></label>
+			  <ul class="menu">
+				<li><a href="#">Game</a></li>
+				<li><a href="#">Graphics</a></li>
+				<li><a href="#">Sound</a></li>
+				<li><a href="#">Controls</a></li>
+			  </ul>
+			</header>
+			
+			<header class="game_menu" id="game_menu3">
+			  <input class="menu-btn3" type="checkbox" id="menu-btn3" />
+			  <label class="menu-icon3" for="menu-btn3"><span>Help</span></label>
+			  <ul class="menu">
+				<li><a href="#">General help</a></li>
+				<li><a href="#">Tips & trics</a></li>
+				<li><a href="#">FAQ</a></li>
+				<li><a href="#">About</a></li>
+			  </ul>
+			</header>
+		
+			<div class="row">
+				
+				<div class="col-9">
+				    <canvas id="background">
+                        Your browser does not support canvas. Please try again with a different browser.
+                    </canvas>
+				</div>
+				
+				<div class="col-3" id="menu_ingame">
+					<div class="ingame_menu visible" data-ingamemenu="0">
+                        <div class="char_menu">
+                            <h2 class="ingame_menu_name">Character</h2>
+                            <div class="character">
+                                <h3 id="char_name">Harry Potter</h3>
+                                <h4 id="char_lvl">Level: <span>12</span></h4>
+                                <h3 id="char_class">Knight</h3>
+                                <h4 id="char_xp">XP: <span>26.500</span></h4>
+                            </div>
+                            <div class="char_attributes">
+                                <h3>Attributes</h3>
+                                <h4 id="char_atr_points"><span>2</span> Points Available</h4>
+                                <ul id="char_atr_list">
+                                    <li>Strength</li>
+                                    <li>Constitution</li>
+                                    <li>Dexterity</li>
+                                    <li>Intelligence</li>
+                                    <li>Luck</li>
+                                </ul>
+                                <ul id="char_atr_list_nr">
+                                    <li>24</li>
+                                    <li>26</li>
+                                    <li>18</li>
+                                    <li>16</li>
+                                    <li>12</li>
+                                </ul>
+                            </div>
+                            <div class="char_hp_xp">
+                                <h4 id="char_hp">Health</h4>
+                                <div class="char_hp_bar"><h4 id="char_hp_stats"><span>945</span> / 945</h4></div>
+                                <h4 id="char_xp">Experience</h4>
+                                <div class="char_xp_bar"><h4 id="char_xp_stats"><span>6200</span> / 8000</h4></div>
+                            </div>
+                            <div class="char_atk_def_stats">
+                                <div class="char_atk_stats">
+                                    <h3>Attack</h3>
+                                    <ul id="char_atk_name">
+                                        <li>Average Damage</li>
+                                        <li>Attack Speed</li>
+                                        <li>Damage per Second (DPS)</li>
+                                    </ul>
+                                    <ul id="char_atk_nbr">
+                                        <li><span>45</span></li>
+                                        <li><span>130%</span></li>
+                                        <li><span>58</span></li>
+                                    </ul>
+                                </div>
+                                <div class="char_def_stats">
+                                    <h3 id="char_def_stats_title">Defense</h3>
+                                    <ul id="char_armor_name">
+                                        <li>Armor</li>
+                                    </ul>
+                                    <ul id="char_armor_nbr">
+                                        <li><span>151</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="game_console_wrapper">
+                            <div class="game_console">
+                                <h2>Game console</h2>
+                            </div>
+                        </div>
+					</div>
+                    
+                    <div class="ingame_menu not_visible" id="ingame_menu_map" data-ingamemenu="1">
+                        <div class="map_menu">
+                            <h2 class="ingame_menu_name">Map</h2>
+                            <div class="character map">
+                                <h3 id="char_name">Harry Potter</h3>
+                                <h4 id="char_lvl">Level: <span>12</span></h4>
+                                <h3 id="map_dungeon_lvl">Dungeon level: <span>4</span></h3>
+                            </div>
+                            <div class="map_img">
+                                <img src="../img/map.jpg">
+                            </div>
+                        </div>
+                        <div class="game_console_wrapper">
+                            <div class="game_console">
+                                <h2>Game console</h2>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ingame_menu not_visible" id="ingame_menu_inventory" data-ingamemenu="2">
+                        <div class="inv_menu">
+                            <h2 class="ingame_menu_name">Inventory</h2>
+                            <div class="character">
+                                <h3 id="char_name">Harry Potter</h3>
+                                <h4 id="char_lvl">Level: <span>12</span></h4>
+                                <h3 id="char_class">Knight</h3>
+                                <h4 id="char_xp">XP: <span>26.500</span></h4>
+                            </div>
+                            <div class="inv_equipment">
+                                <div class="inv_equipment_slot" id="inv_equipment_helm">
+                                   <img src="../img/helmet.png"> 
+                                </div>
+                                <div class="inv_equipment_slot" id="inv_equipment_weapon_left">
+                                    <img src="../img/sword.png">
+                                </div>
+                                <div class="inv_equipment_slot" id="inv_equipment_weapon_right">
+                                    <img src="../img/sword.png">
+                                </div>
+                                <div class="inv_equipment_slot" id="inv_equipment_torso">
+                                    <img src="../img/armor.png">
+                                </div>
+                                <div class="inv_equipment_slot" id="inv_equipment_boots">
+                                    <img src="../img/boots.png">
+                                </div>
+                                <div class="inv_equipment_slot" id="inv_equipment_ring_left">
+                                    <img src="../img/ring.png">
+                                </div>
+                                <div class="inv_equipment_slot" id="inv_equipment_ring_right">
+                                    <img src="../img/ring.png">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="inv_inventory_wrapper">
+                            <div class="inv_wrapper visible" id="inv_wrapper_general" data-inv="0">
+                                <div class="inv_inventory" id="inv_inventory_general">
+                                    <div class="inv_slot" id="inv_slot_1">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_2">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_3">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_4">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_5">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_6">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_7">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_8">
+                                    </div>
+
+                                    <div class="inv_slot" id="inv_slot_9">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_10">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_11">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_12">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_13">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_14">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_15">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_16">
+                                    </div>
+
+                                    <div class="inv_slot" id="inv_slot_17">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_18">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_19">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_20">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_21">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_22">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_23">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_24">
+                                    </div>
+
+                                    <div class="inv_slot" id="inv_slot_25">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_26">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_27">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_28">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_29">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_30">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_31">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_32">
+                                    </div>
+
+                                    <div class="inv_slot" id="inv_slot_33">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_34">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_35">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_36">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_37">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_38">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_39">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_40">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inv_wrapper not_visible" id="inv_wrapper_weapon" data-inv="1">
+                                <div class="inv_inventory" id="inv_inventory_weapon">
+                                <div class="inv_slot" id="inv_slot_1">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_2">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_3">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_4">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_5">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_6">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_7">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_8">
+                                </div>
+                                
+                                <div class="inv_slot" id="inv_slot_9">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_10">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_11">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_12">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_13">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_14">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_15">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_16">
+                                </div>
+                                
+                                <div class="inv_slot" id="inv_slot_17">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_18">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_19">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_20">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_21">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_22">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_23">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_24">
+                                </div>
+                                
+                                <div class="inv_slot" id="inv_slot_25">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_26">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_27">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_28">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_29">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_30">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_31">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_32">
+                                </div>
+                                
+                                <div class="inv_slot" id="inv_slot_33">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_34">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_35">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_36">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_37">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_38">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_39">
+                                </div>
+                                <div class="inv_slot" id="inv_slot_40">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="inv_wrapper not_visible" id="inv_wrapper_armor" data-inv="2">
+                                <div class="inv_inventory" id="inv_inventory_armor">
+                                    <div class="inv_slot" id="inv_slot_1">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_2">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_3">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_4">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_5">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_6">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_7">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_8">
+                                    </div>
+
+                                    <div class="inv_slot" id="inv_slot_9">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_10">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_11">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_12">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_13">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_14">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_15">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_16">
+                                    </div>
+
+                                    <div class="inv_slot" id="inv_slot_17">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_18">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_19">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_20">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_21">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_22">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_23">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_24">
+                                    </div>
+
+                                    <div class="inv_slot" id="inv_slot_25">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_26">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_27">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_28">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_29">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_30">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_31">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_32">
+                                    </div>
+
+                                    <div class="inv_slot" id="inv_slot_33">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_34">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_35">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_36">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_37">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_38">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_39">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_40">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inv_wrapper not_visible" id="inv_wrapper_rings" data-inv="3">
+                                <div class="inv_inventory" id="inv_inventory_rings">
+                                    <div class="inv_slot" id="inv_slot_1">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_2">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_3">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_4">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_5">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_6">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_7">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_8">
+                                    </div>
+
+                                    <div class="inv_slot" id="inv_slot_9">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_10">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_11">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_12">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_13">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_14">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_15">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_16">
+                                    </div>
+
+                                    <div class="inv_slot" id="inv_slot_17">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_18">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_19">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_20">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_21">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_22">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_23">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_24">
+                                    </div>
+
+                                    <div class="inv_slot" id="inv_slot_25">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_26">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_27">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_28">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_29">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_30">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_31">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_32">
+                                    </div>
+
+                                    <div class="inv_slot" id="inv_slot_33">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_34">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_35">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_36">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_37">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_38">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_39">
+                                    </div>
+                                    <div class="inv_slot" id="inv_slot_40">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="inv_tabs">
+                                <div class="inv_tab active_inv_tab" id="inv_tab_general" data-inv="0">
+                                    <img src="../img/inventory_btn.png">
+                                </div>
+                                <div class="inv_tab" id="inv_tab_weapons"  data-inv="1">
+                                    <img src="../img/sword.png">
+                                </div>
+                                <div class="inv_tab" id="inv_tab_armor"  data-inv="2">
+                                    <img src="../img/armor.png">
+                                </div>
+                                <div class="inv_tab" id="inv_tab_rings"  data-inv="3">
+                                    <img src="../img/ring.png">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="ingame_menu_tabs">
+                        <div class="ingame_menu_tab active" id="ingame_menu_char_tab" data-ingamemenu="0">
+                            <img src="../img/char_btn.png">
+                        </div>
+                        <div class="ingame_menu_tab" id="ingame_menu_map_tab" data-ingamemenu="1">
+                            <img src="../img/map.png">
+                        </div>
+                        <div class="ingame_menu_tab" id="ingame_menu_inv_tab" data-ingamemenu="2">
+                            <img src="../img/inventory_btn.png">
+                        </div>
+                    </div>
+                    
+				</div>
+                
+				
+			</div>
+			
+		</div>
+
+		<script src="../js/game-menu-script.js"></script>
+        <script src="../js/space_shooter_part_one.js"></script>
+	</body>
+
+</html>
