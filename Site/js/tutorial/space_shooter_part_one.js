@@ -9,7 +9,7 @@ var imageRepository = new function() {
     this.background = new Image();
     
     // Set images src
-	this.background.src = "../img/test/bg.png";
+	this.background.src = "../../img/test/bg.png";
 }
 
 /**
