@@ -143,6 +143,14 @@ canvas {
     background: transparent;
 }
 
+canvas#main {
+	
+}
+
+canvas#ship {
+	
+}
+
 /* ************************ */
 /* 		INGAME MENU			*/
 /* ************************ */
