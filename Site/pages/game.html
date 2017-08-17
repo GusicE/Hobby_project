@@ -47,6 +47,43 @@
 		
 			<div class="row">
 				
+                <div class="overlay_window" id="welcome_screen">
+                    <audio id="mainMenuAudio" autoplay onloadeddata="audioFadeIn(audio1)">
+                      <source src="../audio/mainMenu.mp3" type="audio/mpeg" >
+                    </audio>
+                    <div class="wrapper">
+                        <div class="welcomeText">
+                            <img src="../img/Game/overlay/welcomeText.png">
+                        </div>
+                        <div class="welcomeBtns">
+                            <ul>
+                                <li class="welcomeBtn" id="startGame"><a href="#" onclick="clickStart()"><h3>Start Game</h3></a></li>
+                                <li class="welcomeBtn" id="credits"><a href="#"><h3>Credits</h3></a></li>
+                                <li class="welcomeBtn" id="exitGame"><a href="../index.html"><h3>Exit Game</h3></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="overlay_window" id="intro">
+                    <audio id="introAudio">
+                      <source src="../audio/intro.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="wrapper">
+                        <div class="hidden" id="introText_1">
+                            <h2>Once, long ago...</h2>
+                            <h2>in a land far far away...</h2>
+                            <h2>A lone hero roamed the land...</h2>
+                        </div>
+                        <div class="hidden" id="introText_2">
+                            <h2>After traveling for years...</h2>
+                            <h2>Our lone hero finally found what he was looking for...</h2>
+                            <h2>The legendary...</h2> 
+                            <h1>DUNGEON OF DOOM!</h1>
+                        </div>
+                    </div>
+                </div>
+                
 				<div class="col-9">
 				    <canvas id="background">
                         Your browser does not support canvas. Please try again with a different browser.
