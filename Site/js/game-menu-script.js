@@ -50,7 +50,7 @@ function clickStart() {
 
 var charCreationScreen = document.getElementById('charCreationScreen');
 var charCreationScreen1 = document.getElementById('charCreationScreen_1');
-var charCreationScreen2 = document.getElementById('charCreationScreen_2');
+var charCreationScreenAcceptBtn = document.getElementById('charCreationScreen_Accept_Btn');
 
 function createChar() {
     audioFadeOut(audio2);

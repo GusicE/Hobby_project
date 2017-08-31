@@ -584,11 +584,11 @@ canvas {
     transition: 0.3s;
 }
 
-#charCreationScreen_2 {
+#charCreationScreen_Accept_Btn {
     margin-top: 30%;
 }
 
-#charCreationScreen_2 a {
+#charCreationScreen_Accept_Btn a {
     text-decoration: none;
     color: #bcbcbc;
     transition: 0.3s;
