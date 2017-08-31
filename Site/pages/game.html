@@ -47,6 +47,67 @@
 		
 			<div class="row">
 				
+                <div class="overlay_window_wrapper" id="overlay_window_wrapper">
+                    
+                    <div class="overlay_window" id="welcome_screen">
+                        <audio id="mainMenuAudio" autoplay onloadeddata="audioFadeIn(audio1)">
+                          <source src="../audio/mainMenu.mp3" type="audio/mpeg" >
+                        </audio>
+                        <div class="wrapper">
+                            <div class="welcomeText">
+                                <img src="../img/Game/overlay/welcomeText.png">
+                            </div>
+                            <div class="welcomeBtns">
+                                <ul>
+                                    <li class="welcomeBtn" id="startGame"><a href="#" onclick="clickStart()"><h3>Start Game</h3></a></li>
+                                    <li class="welcomeBtn" id="credits"><a href="#"><h3>Credits</h3></a></li>
+                                    <li class="welcomeBtn" id="exitGame"><a href="../index.html"><h3>Exit Game</h3></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overlay_window" id="intro">
+                        <audio id="introAudio">
+                          <source src="../audio/intro.mp3" type="audio/mpeg">
+                        </audio>
+                        <div class="wrapper">
+                            <div class="hidden" id="introText_1">
+                                <h2>Once, long ago...</h2>
+                                <h2>In a land far far away...</h2>
+                                <h2>A lone hero roamed the land...</h2>
+                            </div>
+                            <div class="hidden" id="introText_2">
+                                <h2>Seeking gold and eternal glory he traveled for years...</h2>
+                                <h2>Until he finally found...</h2> 
+                            </div>
+                            <div class="hidden" id="introText_3">
+                                <h2>The legendary...</h2>
+                            </div>
+                            <div class="hidden" id="introText_4">
+                                <h1>DUNGEON OF DOOM</h1>
+                            </div>
+                            <div class="WelcomeBtn hidden" id="introText_5">
+                                <a href="#" onclick="createChar()"><h3>Create Character</h3></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="overlay_window hidden" id="charCreationScreen">
+                        <div class="wrapper">
+                        
+                            <div class="" id="charCreationScreen_1">
+                                <h2>Character Creation</h2>
+                            </div>
+                            <div class="WelcomeBtn" id="charCreationScreen_2">
+                                <a href="#" onclick="startGame()"><h3>Start game</h3></a>
+                            </div>
+                            
+                        </div>                    
+                    </div>
+                
+                </div>
+                
 				<div class="col-9">
 				    <canvas id="background">
                         Your browser does not support canvas. Please try again with a different browser.
@@ -74,11 +135,11 @@
                                     <li>Luck</li>
                                 </ul>
                                 <ul id="char_atr_list_nr">
-                                    <li>24</li>
-                                    <li>26</li>
-                                    <li>18</li>
-                                    <li>16</li>
-                                    <li>12</li>
+                                    <li id="str">24</li>
+                                    <li id="cons">26</li>
+                                    <li id="dext">18</li>
+                                    <li id="inteli">16</li>
+                                    <li id="luck">12</li>
                                 </ul>
                             </div>
                             <div class="char_hp_xp">
