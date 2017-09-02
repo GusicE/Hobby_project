@@ -33,6 +33,9 @@ var intro4 = document.getElementById('introText_4');
 var intro5 = document.getElementById('introText_5');
 var audio1 = document.getElementById('mainMenuAudio');
 var audio2 = document.getElementById('introAudio');
+var charCreationScreen = document.getElementById('charCreationScreen');
+var charCreationScreen1 = document.getElementById('charCreationScreen_1');
+var charCreationScreenAcceptBtn = document.getElementById('charCreationScreen_Accept_Btn');
 	
 function clickStart() {
     overlay.classList.add("hide");
@@ -48,9 +51,18 @@ function clickStart() {
     audio2.play();
 }
 
-var charCreationScreen = document.getElementById('charCreationScreen');
-var charCreationScreen1 = document.getElementById('charCreationScreen_1');
-var charCreationScreenAcceptBtn = document.getElementById('charCreationScreen_Accept_Btn');
+
+var Hero = {
+    name: "",
+    gender: "",
+    class: "",
+    strenght: "",
+    constitution: "",
+    dexterity: "",
+    intelligence: "",
+    luck: "",    
+}
+
 
 function createChar() {
     audioFadeOut(audio2);
@@ -62,6 +74,44 @@ function startGame() {
     charCreationScreen.classList.add('hide');
     overlayWrapper.classList.add('hide');
 }
+
+function nextStep1() {
+    var charCreationGender = document.getElementById('charCreationGender');
+    var charCreationName = document.getElementById('charCreationName');
+    
+    var gender = document.getElementsByName('gender');
+    
+    for (var i = 0, length = gender.length; i < length; i++) {
+        if (gender[i].checked) {
+            // do whatever you want with the checked radio
+            Hero.gender = gender[i].value;
+
+            // only one radio can be logically checked, don't check the rest
+            break;
+        }
+    }
+    
+    var charSummaryGender = document.getElementById('charSummaryGender');
+    
+    charSummaryGender.innerHTML = Hero.gender;
+    
+    charCreationGender.classList.add('hidden2');
+    charCreationName.classList.remove('hidden2');
+}
+
+function nextStep4() {
+    var charCreationName = document.getElementById('charCreationName');
+    var name = document.getElementById('charCreationNameInput');
+    
+    Hero.name = name.value;
+    
+    var charSummaryName = document.getElementById('charSummaryName');
+    charSummaryName.innerHTML = Hero.name;
+    charCreationName.classList.add('hidden2');
+}
+
+
+
 
 function audioFadeIn(track) {
 var audio = track;    
@@ -107,3 +157,5 @@ var fadeout = setInterval(
     }
   }, interval);
 };
+
+

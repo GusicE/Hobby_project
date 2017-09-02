@@ -49,7 +49,7 @@
 				
                 <div class="overlay_window_wrapper" id="overlay_window_wrapper">
                     
-                    <div class="overlay_window" id="welcome_screen">
+                    <!--<div class="overlay_window" id="welcome_screen">
                         <audio id="mainMenuAudio" autoplay onloadeddata="audioFadeIn(audio1)">
                           <source src="../audio/mainMenu.mp3" type="audio/mpeg" >
                         </audio>
@@ -91,33 +91,70 @@
                                 <a href="#" onclick="createChar()"><h3>Create Character</h3></a>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     
-                    <div class="overlay_window hidden" id="charCreationScreen">
-                        <div class="wrapper">
+                    <div class="overlay_window" id="charCreationScreen">
+                        <div class="wrapper" id="charCreationScreenWrapper">
                         
                             <div class="" id="charCreationScreen_1">
-                                <h2>Character Creation</h2>
+                                <h1>Character Creation</h1>
                             </div>
                             
                             <div class="" id="charCreationScreen_2">
                                 <div class="charCreationScreenMenu">
-                                    <ul>
-                                        <li><h4>Gender</h4></li>
-                                        <li><h4>Class</h4></li>
-                                        <li><h4>Attributes</h4></li>
-                                        <li><h4>Appearance</h4></li>
-                                        <li><h4>Name</h4></li>
-                                    </ul>
-                                </div>
+                                    
+                                    <div class="" id="charCreationGender">
+                                        <h3>Select your gender</h3>
+                                        
+                                        <form class="charCreationForm">
+                                            <input type="radio" name="gender" value="Male" class="genderBtn" id="genderBtn1" checked>
+                                            <label class="genderBtnIcon" for="genderBtn1"><span>Male</span></label><br>
+                                            <input type="radio" name="gender" value="Female" class="genderBtn" id="genderBtn2">
+                                            <label class="genderBtnIcon" for="genderBtn2"><span>Female</span></label><br>
+                                        </form>
+                                        
+                                        <div class="charCreationBtn" id="charCreationScreen_next_Btn1">
+                                            <a href="#" onclick="nextStep1()"><h3>Next step</h3></a>
+                                        </div>
+   
+                                    </div>
+                                    
+                                    <div class="hidden2" id="charCreationName">
+                                        <h3>What is your name?</h3>
+                                        <form class="charCreationForm">
+                                            <input type="text" value="" id="charCreationNameInput" placeholder="Your name.." maxlength="18">
+                                        </form>
+                                        
+                                        <div class="charCreationBtn disabled" id="charCreationScreen_next_Btn4">
+                                            <a href="#" onclick="nextStep4()"><h3>Next step</h3></a>
+                                        </div>
+                                        
+                                        <script>
+                                            function checkform() {
+                                            $(':text').keyup(function() {
+                                                if($('#charCreationNameInput').val() != "") {
+                                                   $('#charCreationScreen_next_Btn4').removeClass(' disabled');
+                                                } else {
+                                                   $('#charCreationScreen_next_Btn4').addClass(' disabled');   
+                                                }
+                                            });
+                                            }
+                                            checkform();
+                                        </script>
+                                        
+                                    </div>       
+       
+                                </div>                                
                             </div>
                             
                             <div class="" id="charCreationScreen_3">
                                 <div class="charCreationScreenMenu">
-                                    <img src="#" id="charAvatar">
+                                    <div class="charCreationScreenAvatar">
+                                        <img src="../img/avatar/Figh73_L.BMP" id="charAvatar">
+                                    </div>
                                     <div class="charCreationSummary">
                                         <h4>Character summary</h4>
-                                        <p>Gender:</p>
+                                        <p>Gender: <span id="charSummaryGender"></span></p>
                                         <p>Class:</p>
                                         <p>Attributes:</p>
                                         <ul>
@@ -127,12 +164,12 @@
                                             <li>Intelligence:</li>
                                             <li>Luck:</li>
                                         </ul>
-                                        <p>Name:</p>
+                                        <p>Name: <span id="charSummaryName"></span></p>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="WelcomeBtn" id="charCreationScreen_Accept_Btn">
+                            <div class="charCreationBtn" id="charCreationScreen_Accept_Btn">
                                 <a href="#" onclick="startGame()"><h3>Start game</h3></a>
                             </div>
                             

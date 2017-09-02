@@ -472,6 +472,12 @@ canvas {
     opacity: 0;
 }
 
+.hidden2 {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
 .show {
     visibility: visible;
     opacity: 1;
@@ -584,14 +590,150 @@ canvas {
     transition: 0.3s;
 }
 
-#charCreationScreen_Accept_Btn {
-    margin-top: 30%;
+
+
+/* CHAR CREATION SCREEN */
+
+#charCreationScreenWrapper {
+	top: 100px;
 }
 
-#charCreationScreen_Accept_Btn a {
+#charCreationScreen_Accept_Btn {
+    margin-top: 50%;
+}
+
+.charCreationBtn a {
     text-decoration: none;
     color: #bcbcbc;
     transition: 0.3s;
     display: inline-block;
-    float: right;
 }
+
+.charCreationBtn a:hover {
+    color: #fff;
+}
+
+#charCreationScreen_Accept_Btn a {
+	float: right;
+}
+
+#charCreationScreen_next_Btn1,
+#charCreationScreen_next_Btn4 {
+    float: right;
+    margin-right: 10%;
+}
+
+#charCreationScreen_next_Btn4.disabled {
+    visibility: hidden;
+}
+
+div#charCreationScreen_1 {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 80px;
+}
+
+div#charCreationScreen_2 {
+    display: inline-block;
+    width: 60%;
+    height: 70vh;
+    float:  left;
+    border-right: 2px solid #fff;
+}
+
+div#charCreationScreen_3 {
+    display: inline-block;
+    width: 30%;
+    height: 70vh;
+    float: left;
+    margin-left: 10%;
+}
+
+.charCreationScreenMenu {
+    text-align: left;
+    height: 90%;
+}
+
+#charCreationGender,
+#charCreationName {
+   height: 70vh; 
+}
+
+div#charCreationScreen_2 ul li.charCreationBtn:hover {
+	cursor: pointer;
+	background-color: #d8d7d7;
+	color: #292929;
+	transition: 0.2s;
+}
+
+.charCreationSummary {
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.charCreationSummary h4, 
+.charCreationSummary p {
+	margin: 10px 0;
+}
+
+.charCreationSummary ul {
+	margin: 20px 0;
+}
+
+.charCreationSummary ul li {
+	margin: 5px 0;
+	margin-left: 20px;
+}
+
+.charCreationSummary p span {
+    font-weight: bold;
+}
+
+.charCreationScreenAvatar {
+    border: 1px solid white;
+    border-radius: 10px;
+    height: 250px;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.selected {
+    background-color: #d8d7d7;
+	color: #292929;
+}
+
+.charCreationForm {
+    display: block;
+    margin: 20px 0;
+    height: 80%;
+}
+
+.genderBtn {
+    display: none;
+}
+
+.genderBtnIcon {
+    width: 200px;
+    padding: 15px 20px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    user-select: none;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.charCreationForm input[type="radio"]:checked+label {
+  background-color: #fff;
+  color: #292929;
+  transition: 0.2s;
+}
+
+#charCreationScreenWrapper input[type=text] {
+	width: 40%;
+    padding: 10px;
+}
+
