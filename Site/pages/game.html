@@ -104,17 +104,21 @@
                                 <div class="charCreationScreenMenu">
                                     
                                     <div class="" id="charCreationGender">
-                                        <h3>Select your gender</h3>
+                                        <div class="charCreationWrapper">
+                                            
+                                            <h3>Select your gender</h3>
+
+                                            <form class="charCreationForm">
+                                                <input type="radio" name="gender" value="Male" class="genderBtn" id="genderBtn1" checked>
+                                                <label class="genderBtnIcon" for="genderBtn1"><span>Male</span></label><br>
+                                                <input type="radio" name="gender" value="Female" class="genderBtn" id="genderBtn2">
+                                                <label class="genderBtnIcon" for="genderBtn2"><span>Female</span></label><br>
+                                            </form>
+
+                                            <div class="charCreationInfo" id="charCreationGenderInfo">
+                                                <p>There is no difference in gameplay between male and female.</p>
+                                            </div>
                                         
-                                        <form class="charCreationForm">
-                                            <input type="radio" name="gender" value="Male" class="genderBtn" id="genderBtn1" checked>
-                                            <label class="genderBtnIcon" for="genderBtn1"><span>Male</span></label><br>
-                                            <input type="radio" name="gender" value="Female" class="genderBtn" id="genderBtn2">
-                                            <label class="genderBtnIcon" for="genderBtn2"><span>Female</span></label><br>
-                                        </form>
-                                        
-                                        <div class="charCreationInfo" id="charCreationGenderInfo">
-                                            <p>There is no difference in gameplay between male and female.</p>
                                         </div>
                                         
                                         <div class="charCreationBtn" id="charCreationScreen_next_Btn1">
@@ -124,6 +128,7 @@
                                     </div>
                                     
                                     <div class="hidden2" id="charCreationClass">
+                                        <div class="charCreationWrapper">
                                         <h3>Select your class</h3>
                                         
                                         <form class="charCreationForm">
@@ -198,6 +203,7 @@
                                                 </ul>
                                             </div>
                                         </div>
+                                        </div>
                                         
                                         <div class="charCreationBtn" id="charCreationScreen_next_Btn2">
                                             <a href="#" onclick="nextStep2()"><h3>Next step</h3></a>
@@ -205,12 +211,60 @@
    
                                     </div>
                                     
-                                    <div class="hidden2" id="charCreationName">
-                                        <h3>What is your name?</h3>
-                                        <form class="charCreationForm" id="charCreationFormName">
-                                            <input type="text" value="" id="charCreationNameInput" placeholder="Your name.." maxlength="18">
-                                        </form>
+                                    <div class="hidden2" id="charCreationAtrib">
+                                        <div class="charCreationWrapper">
+                                            
+                                            <h3>Character attributes</h3>
                                         
+                                            <div class="charCreateAttribute" id="">
+                                                <ul>
+                                                    <li>Strength</li>
+                                                    <li>Constitution</li>
+                                                    <li>Dexterity</li>
+                                                    <li>Intelligence</li>
+                                                    <li>Luck</li>
+                                                </ul>
+                                                <ul>
+                                                    <li><span id="charCreationStr"></span></li>
+                                                    <li><span id="charCreationCons"></span></li>
+                                                    <li><span id="charCreationDext"></span></li>
+                                                    <li><span id="charCreationInteli"></span></li>
+                                                    <li><span id="charCreationLuck"></span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="charCreateAttribute" id="charCreateAttribute2">
+                                                <ul>
+                                                    <li>Total Points</li>
+                                                </ul>
+                                                <ul>
+                                                    <li><span id="charCreationTotal"></span></li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="charCreateAttributeBtns">
+                                                <button type="button" class="charCreateAttributeBtn" id="charAtribreroll" onclick="rerollStats()">Reroll stats</button>
+                                                <button type="button" class="charCreateAttributeBtn" id="charAtribsave" onclick="saveStats()">Save stats</button>
+                                                <button type="button" class="charCreateAttributeBtn" id="charAtribload" onclick="loadStats()">Load stats</button>
+                                            </div>
+                                            
+                                        </div> 
+                                     
+                                        <div class="charCreationBtn" id="charCreationScreen_next_Btn3">
+                                            <a href="#" onclick="nextStep3()"><h3>Next step</h3></a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="hidden2" id="charCreationName">
+                                        <div class="charCreationWrapper">
+                                            
+                                            <h3>What is your name?</h3>
+                                            
+                                            <form class="charCreationForm" id="charCreationFormName">
+                                                <input type="text" value="" id="charCreationNameInput" placeholder="Your name.." maxlength="18">
+                                            </form>
+                                            
+                                        </div>
+
                                         <div class="charCreationBtn disabled" id="charCreationScreen_next_Btn4">
                                             <a href="#" onclick="nextStep4()"><h3>Next step</h3></a>
                                         </div>
@@ -228,7 +282,18 @@
                                             checkform();
                                         </script>
                                         
-                                    </div>       
+                                    </div> 
+                                    
+                                    <div class="hidden2" id="charCreationFinal">
+                                        <div class="charCreationWrapper">
+                                            <h3>Are you sure you want to use this character?</h3>
+                                            <div class="charCreateFinalBtns">
+                                                <button type="button" class="charCreateAttributeBtn" id="charCreateStartOver" onclick="">Change character</button>
+                                                <button type="button" class="charCreateAttributeBtn" id="charCreateStartGame" onclick="startGame()
+">Start game</button>
+                                            </div>
+                                        </div>
+                                    </div>
        
                                 </div>                                
                             </div>
@@ -240,23 +305,37 @@
                                     </div>
                                     <div class="charCreationSummary">
                                         <h4>Character summary</h4>
-                                        <p>Gender: <span id="charSummaryGender"></span></p>
-                                        <p>Class: <span id="charSummaryClass"></span></p>
-                                        <p>Attributes:</p>
                                         <ul>
-                                            <li>Strenght:</li>
-                                            <li>Constitution:</li>
-                                            <li>Dexterity:</li>
-                                            <li>Intelligence:</li>
-                                            <li>Luck:</li>
+                                            <li>Gender: </li>
+                                            <li>Class: </li>
                                         </ul>
-                                        <p>Name: <span id="charSummaryName"></span></p>
+                                        <ul>
+                                            <li><span id="charSummaryGender"></span></li>
+                                            <li><span id="charSummaryClass"></span></li>
+                                        </ul>
+                                        <p>Attributes</p>
+                                        <ul class="charCreationSummaryAtr">
+                                            <li>Strenght: </li>
+                                            <li>Constitution: </li>
+                                            <li>Dexterity: </li>
+                                            <li>Intelligence: </li>
+                                            <li>Luck: </li>
+                                        </ul>
+                                        <ul class="charCreationSummaryAtr">
+                                            <li><span id="charSummaryStr"></span></li>
+                                            <li><span id="charSummaryCons"></span></li>
+                                            <li><span id="charSummaryDext"></span></li>
+                                            <li><span id="charSummaryInteli"></span></li>
+                                            <li><span id="charSummaryLuck"></span></li>
+                                        </ul>
+                                        <ul>
+                                            <li>Name: </li>
+                                        </ul>
+                                        <ul>
+                                            <li><span id="charSummaryName"></span></li>
+                                        </ul>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="charCreationBtn" id="charCreationScreen_Accept_Btn">
-                                <a href="#" onclick="startGame()"><h3>Start game</h3></a>
                             </div>
                             
                         </div>                    

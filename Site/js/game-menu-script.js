@@ -113,7 +113,7 @@ function nextStep1() {
 
 function nextStep2() {
     var charCreationClass = document.getElementById('charCreationClass');
-    var charCreationName = document.getElementById('charCreationName');
+    var charCreationAtrib = document.getElementById('charCreationAtrib');
     
     var clas = document.getElementsByName('class');
     
@@ -131,6 +131,96 @@ function nextStep2() {
     charSummaryClass.innerHTML = Hero.class;
     
     charCreationClass.classList.add('hidden2');
+    charCreationAtrib.classList.remove('hidden2');
+    rerollStats();
+}
+
+var shownStr = document.getElementById('charCreationStr');
+var shownCons = document.getElementById('charCreationCons');
+var shownDext = document.getElementById('charCreationDext');
+var shownInteli = document.getElementById('charCreationInteli');
+var shownLuck = document.getElementById('charCreationLuck');
+var shownTotal = document.getElementById('charCreationTotal');
+
+function getRandom(min, max) {
+  var Random = Math.floor(Math.random() * (max - min + 1)) + min;
+  return Random;
+}
+
+var tempStats = {
+    str: "",
+    cons: "",
+    dext: "",
+    inteli: "",
+    luck: ""
+}
+
+function rerollStats() {
+    
+    tempStats = {
+    str: getRandom(10, 20),
+    cons: getRandom(10, 20),
+    dext: getRandom(10, 20),
+    inteli: getRandom(10, 20),
+    luck: getRandom(8, 17)
+    }
+    
+    shownStr.innerHTML = tempStats.str;
+    shownCons.innerHTML = tempStats.cons;
+    shownDext.innerHTML = tempStats.dext;
+    shownInteli.innerHTML = tempStats.inteli;
+    shownLuck.innerHTML = tempStats.luck;
+    shownTotal.innerHTML = tempStats.str + tempStats.cons + tempStats.dext + tempStats.inteli + tempStats.luck;
+}
+
+var savedStats = {
+        str: "",
+        cons: "",
+        dext: "",
+        inteli: "",
+        luck: ""
+}
+
+function saveStats() {
+        savedStats.str = shownStr.innerHTML;
+        savedStats.cons = shownCons.innerHTML;
+        savedStats.dext = shownDext.innerHTML;
+        savedStats.inteli = shownInteli.innerHTML;
+        savedStats.luck = shownLuck.innerHTML;
+}
+
+function loadStats() {
+    shownStr.innerHTML = savedStats.str;
+    shownCons.innerHTML = savedStats.cons;
+    shownDext.innerHTML = savedStats.dext;
+    shownInteli.innerHTML = savedStats.inteli;
+    shownLuck.innerHTML = savedStats.luck;
+    shownTotal.innerHTML = parseInt(savedStats.str) + parseInt(savedStats.cons) + parseInt(savedStats.dext) + parseInt(savedStats.inteli) + parseInt(savedStats.luck);
+}
+
+function nextStep3() {
+    var charCreationAtrib = document.getElementById('charCreationAtrib');
+    var charCreationName = document.getElementById('charCreationName');
+    
+    var charSummaryStr = document.getElementById('charSummaryStr');
+    var charSummaryCons = document.getElementById('charSummaryCons');
+    var charSummaryDext = document.getElementById('charSummaryDext');
+    var charSummaryInteli = document.getElementById('charSummaryInteli');
+    var charSummaryLuck = document.getElementById('charSummaryLuck');
+    
+    Hero.strenght = shownStr.innerHTML;
+    Hero.constitution = shownCons.innerHTML;
+    Hero.dexterity = shownDext.innerHTML;
+    Hero.intelligence = shownInteli.innerHTML;
+    Hero.luck = shownLuck.innerHTML;
+    
+    charSummaryStr.innerHTML = Hero.strenght;
+    charSummaryCons.innerHTML = Hero.constitution;
+    charSummaryDext.innerHTML = Hero.dexterity;
+    charSummaryInteli.innerHTML = Hero.intelligence;
+    charSummaryLuck.innerHTML = Hero.luck;
+    
+    charCreationAtrib.classList.add('hidden2');
     charCreationName.classList.remove('hidden2');
 }
 
@@ -138,6 +228,8 @@ function nextStep2() {
 
 function nextStep4() {
     var charCreationName = document.getElementById('charCreationName');
+    var charCreationFinal = document.getElementById('charCreationFinal');
+    
     var name = document.getElementById('charCreationNameInput');
     
     Hero.name = name.value;
@@ -145,6 +237,7 @@ function nextStep4() {
     var charSummaryName = document.getElementById('charSummaryName');
     charSummaryName.innerHTML = Hero.name;
     charCreationName.classList.add('hidden2');
+    charCreationFinal.classList.remove('hidden2');
 }
 
 

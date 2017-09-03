@@ -619,6 +619,7 @@ canvas {
 
 #charCreationScreen_next_Btn1,
 #charCreationScreen_next_Btn2,
+#charCreationScreen_next_Btn3,
 #charCreationScreen_next_Btn4 {
     float: right;
     margin-right: 10%;
@@ -657,9 +658,14 @@ div#charCreationScreen_3 {
 
 #charCreationGender,
 #charCreationClass,
+#charCreationAtrib,
 #charCreationName {
    height: 70vh; 
    width: 100%;
+}
+
+.charCreationWrapper {
+    height: 80%;
 }
 
 div#charCreationScreen_2 ul li.charCreationBtn:hover {
@@ -673,15 +679,22 @@ div#charCreationScreen_2 ul li.charCreationBtn:hover {
     padding: 20px;
     border: 1px solid white;
     border-radius: 10px;
+    width: 100%;
 }
 
-.charCreationSummary h4, 
-.charCreationSummary p {
+.charCreationSummary h4 {
 	margin: 10px 0;
 }
 
+.charCreationSummary p {
+    margin-left: 20px;
+    margin-bottom: -10px;
+}
+
 .charCreationSummary ul {
-	margin: 20px 0;
+	margin: 10px 0;
+    width: 40%;
+    display: inline-block;
 }
 
 .charCreationSummary ul li {
@@ -691,6 +704,10 @@ div#charCreationScreen_2 ul li.charCreationBtn:hover {
 
 .charCreationSummary p span {
     font-weight: bold;
+}
+
+.charCreationSummary .charCreationSummaryAtr {
+    margin-left: 20px;
 }
 
 .charCreationScreenAvatar {
@@ -782,4 +799,53 @@ div#charCreationScreen_2 ul li.charCreationBtn:hover {
 
 .filled {
     background-color: #fff;
+}
+
+.charCreateAttribute {
+    margin: 10px 0;
+    display: block;
+    width: 100%;
+    float: left;
+}
+
+#charCreateAttribute2 {
+    margin: 0;
+}
+
+.charCreateAttribute ul {
+    display: inline-block;
+    width: 30%;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.charCreateAttribute ul li {
+    margin: 20px 0;
+}
+
+#charCreateAttribute2 ul li {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.charCreateAttributeBtn {
+    width: 120px;
+    height: 35px;
+    margin-right: 10px;
+    background-color: #292929;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+.charCreateAttributeBtn:hover {
+    cursor: pointer;
+}
+
+.charCreateFinalBtns {
+    margin-top: 30px;
+}
+
+.charCreateFinalBtns .charCreateAttributeBtn {
+    margin-right: 20px;
 }
