@@ -113,15 +113,101 @@
                                             <label class="genderBtnIcon" for="genderBtn2"><span>Female</span></label><br>
                                         </form>
                                         
+                                        <div class="charCreationInfo" id="charCreationGenderInfo">
+                                            <p>There is no difference in gameplay between male and female.</p>
+                                        </div>
+                                        
                                         <div class="charCreationBtn" id="charCreationScreen_next_Btn1">
                                             <a href="#" onclick="nextStep1()"><h3>Next step</h3></a>
                                         </div>
    
                                     </div>
                                     
+                                    <div class="hidden2" id="charCreationClass">
+                                        <h3>Select your class</h3>
+                                        
+                                        <form class="charCreationForm">
+                                            <input type="radio" name="class" value="Knight" class="classBtn" id="classBtn1" data-clasChoice="1" checked>
+                                            <label class="genderBtnIcon" for="classBtn1"><span>Knight</span></label><br>
+                                            
+                                            <input type="radio" name="class" value="Ranger" class="classBtn" id="classBtn2" data-clasChoice="2">
+                                            <label class="genderBtnIcon" for="classBtn2"><span>Ranger</span></label><br>
+                                            
+                                            <input type="radio" name="class" value="Wizard" class="classBtn" id="classBtn3" data-clasChoice="3">
+                                            <label class="genderBtnIcon" for="classBtn3"><span>Wizard</span></label><br>
+                                            
+                                            <input type="radio" name="class" value="Rogue" class="classBtn" id="classBtn4" data-clasChoice="4">
+                                            <label class="genderBtnIcon" for="classBtn4"><span>Rogue</span></label><br>
+                                        </form>
+                                        
+                                        <div class="charCreationInfo" id="charCreationClassInfo">
+                                            <div class="charCreationInfoText" id="charCreationKnightText" data-clasChoice="1">
+                                                <p>A knight specializes in heavy armor and high consitution for survivability.</p><br />
+                                                <p>He/she can use a wide range of weapons, but is too dumb for most magic scrolls and special items.</p>
+                                                <ul class="charCreationClassStats">
+                                                    <li>Weapons: </li>
+                                                    <li>Armor: </li>
+                                                    <li>Specialty: </li>
+                                                </ul>
+                                                <ul class="charCreationClassStats">
+                                                    <li><span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span>&emsp;</span></li>
+                                                    <li><span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span>&emsp;</span> <span>&emsp;</span></li>
+                                                    <li><span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span>&emsp;</span> <span>&emsp;</span> <span>&emsp;</span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="charCreationInfoText not_visible" id="charCreationRangerText" data-clasChoice="2">
+                                                <p>A Ranger is a person of the forest and the hunt. The ranger specializes in a high weapon knowledge and high hit chance.</p><br />
+                                                <p>He/she use medium armor for protection and just as the knight, cannot use most of the magic scrolls and special items.</p>
+                                                <ul class="charCreationClassStats">
+                                                    <li>Weapons: </li>
+                                                    <li>Armor: </li>
+                                                    <li>Specialty: </li>
+                                                </ul>
+                                                <ul class="charCreationClassStats">
+                                                    <li><span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span class="filled">&emsp;</span></li>
+                                                    <li><span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span>&emsp;</span> <span>&emsp;</span> <span>&emsp;</span></li>
+                                                    <li><span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span>&emsp;</span> <span>&emsp;</span> <span>&emsp;</span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="charCreationInfoText not_visible" id="charCreationWizardText" data-clasChoice="3">
+                                                <p>The wizard is an anchient and feared person by most people. His weapon and armor are his mind and his arcane powers.</p><br />
+                                                <p>While being specialized in the arcane arts, the wizard is not very knowledgeable about weapons and uses only light armor. He/she can however use even the most complex magic scrolls.</p>
+                                                <ul class="charCreationClassStats">
+                                                    <li>Weapons: </li>
+                                                    <li>Armor: </li>
+                                                    <li>Specialty: </li>
+                                                </ul>
+                                                <ul class="charCreationClassStats">
+                                                    <li><span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span>&emsp;</span> <span>&emsp;</span> <span>&emsp;</span></li>
+                                                    <li><span class="filled">&emsp;</span> <span>&emsp;</span> <span>&emsp;</span> <span>&emsp;</span> <span>&emsp;</span></li>
+                                                    <li><span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span>&emsp;</span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="charCreationInfoText not_visible" id="charCreationRogueText" data-clasChoice="4">
+                                                <p>A creature of the night, the rogue uses the shadows to hide himself, deliver unexpected damage and return again to the nether realm</p><br />
+                                                <p>A rogue has not much use of heavy armor, as it relies on his high dexterity to avoid attacks.</p>
+                                                <ul class="charCreationClassStats">
+                                                    <li>Weapons: </li>
+                                                    <li>Armor: </li>
+                                                    <li>Specialty: </li>
+                                                </ul>
+                                                <ul class="charCreationClassStats">
+                                                    <li><span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span>&emsp;</span> <span>&emsp;</span></li>
+                                                    <li><span class="filled">&emsp;</span> <span>&emsp;</span> <span>&emsp;</span> <span>&emsp;</span> <span>&emsp;</span></li>
+                                                    <li><span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span class="filled">&emsp;</span> <span>&emsp;</span> <span>&emsp;</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="charCreationBtn" id="charCreationScreen_next_Btn2">
+                                            <a href="#" onclick="nextStep2()"><h3>Next step</h3></a>
+                                        </div>
+   
+                                    </div>
+                                    
                                     <div class="hidden2" id="charCreationName">
                                         <h3>What is your name?</h3>
-                                        <form class="charCreationForm">
+                                        <form class="charCreationForm" id="charCreationFormName">
                                             <input type="text" value="" id="charCreationNameInput" placeholder="Your name.." maxlength="18">
                                         </form>
                                         
@@ -155,7 +241,7 @@
                                     <div class="charCreationSummary">
                                         <h4>Character summary</h4>
                                         <p>Gender: <span id="charSummaryGender"></span></p>
-                                        <p>Class:</p>
+                                        <p>Class: <span id="charSummaryClass"></span></p>
                                         <p>Attributes:</p>
                                         <ul>
                                             <li>Strenght:</li>

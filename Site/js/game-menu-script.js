@@ -23,6 +23,16 @@ $(".inv_tab").click(function() {
     $(".inv_tab[data-inv="+info+"]").addClass(" active_inv_tab");
 });
 
+$(".classBtn").click(function() {
+   // Hides all ingame menu's.
+    $(".charCreationInfoText").addClass(" not_visible").removeClass("visible");
+
+   // Shows appropriate one.
+   var classChoice = $(this).data("claschoice"); // Fetches the value of the data-clas attribute.
+   $(".charCreationInfoText[data-claschoice="+classChoice+"]").addClass(" visible").removeClass("not_visible");
+});
+
+
 var overlayWrapper = document.getElementById('overlay_window_wrapper');
 var overlay = document.getElementById('welcome_screen');
 var intro = document.getElementById('intro');
@@ -77,7 +87,7 @@ function startGame() {
 
 function nextStep1() {
     var charCreationGender = document.getElementById('charCreationGender');
-    var charCreationName = document.getElementById('charCreationName');
+    var charCreationClass = document.getElementById('charCreationClass');
     
     var gender = document.getElementsByName('gender');
     
@@ -96,8 +106,35 @@ function nextStep1() {
     charSummaryGender.innerHTML = Hero.gender;
     
     charCreationGender.classList.add('hidden2');
+    charCreationClass.classList.remove('hidden2');
+}
+
+
+
+function nextStep2() {
+    var charCreationClass = document.getElementById('charCreationClass');
+    var charCreationName = document.getElementById('charCreationName');
+    
+    var clas = document.getElementsByName('class');
+    
+    for (var i = 0, length = clas.length; i < length; i++) {
+        if (clas[i].checked) {
+            // do whatever you want with the checked radio
+            Hero.class = clas[i].value;
+
+            // only one radio can be logically checked, don't check the rest
+            break;
+        }
+    }
+    
+    var charSummaryClass = document.getElementById('charSummaryClass');
+    charSummaryClass.innerHTML = Hero.class;
+    
+    charCreationClass.classList.add('hidden2');
     charCreationName.classList.remove('hidden2');
 }
+
+
 
 function nextStep4() {
     var charCreationName = document.getElementById('charCreationName');

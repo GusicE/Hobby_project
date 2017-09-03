@@ -618,6 +618,7 @@ canvas {
 }
 
 #charCreationScreen_next_Btn1,
+#charCreationScreen_next_Btn2,
 #charCreationScreen_next_Btn4 {
     float: right;
     margin-right: 10%;
@@ -655,8 +656,10 @@ div#charCreationScreen_3 {
 }
 
 #charCreationGender,
+#charCreationClass,
 #charCreationName {
    height: 70vh; 
+   width: 100%;
 }
 
 div#charCreationScreen_2 ul li.charCreationBtn:hover {
@@ -705,12 +708,19 @@ div#charCreationScreen_2 ul li.charCreationBtn:hover {
 }
 
 .charCreationForm {
-    display: block;
+    float: left;
+    display: inline-block;
     margin: 20px 0;
     height: 80%;
 }
 
-.genderBtn {
+#charCreationFormName {
+    display: block;
+    float: none;
+}
+
+.genderBtn,
+.classBtn {
     display: none;
 }
 
@@ -735,5 +745,41 @@ div#charCreationScreen_2 ul li.charCreationBtn:hover {
 #charCreationScreenWrapper input[type=text] {
 	width: 40%;
     padding: 10px;
+    background-color: #292929;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
 }
 
+.charCreationInfo {
+    display: inline-block;
+    float: left;
+    width: 50%;
+    height: 80%;
+    margin-left: 20%;
+    padding: 0 30px;
+    padding-top: 30px;
+}
+
+.charCreationInfoText ul {
+    margin: 20px 0;
+}
+
+.charCreationInfoText ul li {
+    margin: 10px 0;
+}
+
+.charCreationInfoText ul li span {
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+
+.charCreationInfoText .charCreationClassStats {
+    float: left;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.filled {
+    background-color: #fff;
+}
