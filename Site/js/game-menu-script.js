@@ -32,7 +32,6 @@ $(".classBtn").click(function() {
    $(".charCreationInfoText[data-claschoice="+classChoice+"]").addClass(" visible").removeClass("not_visible");
 });
 
-
 var overlayWrapper = document.getElementById('overlay_window_wrapper');
 var overlay = document.getElementById('welcome_screen');
 var intro = document.getElementById('intro');
@@ -229,17 +228,19 @@ function nextStep3() {
 function nextStep4() {
     var charCreationName = document.getElementById('charCreationName');
     var charCreationFinal = document.getElementById('charCreationFinal');
+    var activeAvatar = document.getElementsByClassName('activeAvatar');
+    var avatarPlaceholder = document.getElementById('charAvatarPlaceholder');
     
     var name = document.getElementById('charCreationNameInput');
     
     Hero.name = name.value;
     
+    avatarPlaceholder.src = activeAvatar[0].src;
     var charSummaryName = document.getElementById('charSummaryName');
     charSummaryName.innerHTML = Hero.name;
     charCreationName.classList.add('hidden2');
     charCreationFinal.classList.remove('hidden2');
 }
-
 
 
 

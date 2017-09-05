@@ -257,13 +257,54 @@
                                     <div class="hidden2" id="charCreationName">
                                         <div class="charCreationWrapper">
                                             
+                                            <h3>Choose your appearance</h3>
+                                            
+                                            <div class="charCreationScreenAvatar" id="charCreationChooseAvatar">
+                                                <div class="charCreationAvatarBtn" id="charCreationAvatarPrevious">
+                                                    <p><a href="#" onclick="plusDivs(-1)"><span>&lt;</span></a></p>
+                                                </div>
+                                                
+                                                <div class="charCreationAvatarImg">
+                                                    <img src="../img/avatar/Figh73_L.BMP" class="charAvatar">
+                                                    <img src="../img/avatar/Cler02_L.BMP" class="charAvatar not_visible">
+                                                    <img src="../img/avatar/Barb01_L.BMP" class="charAvatar not_visible">
+                                                    <img src="../img/avatar/Drui05_L.BMP" class="charAvatar not_visible">
+                                                </div>
+                                                
+                                                <div class="charCreationAvatarBtn" id="charCreationAvatarNext">
+                                                    <p><a href="#" onclick="plusDivs(1)"><span>&gt;</span></a></p>
+                                                </div>
+                                            </div>
+                                            
                                             <h3>What is your name?</h3>
                                             
                                             <form class="charCreationForm" id="charCreationFormName">
                                                 <input type="text" value="" id="charCreationNameInput" placeholder="Your name.." maxlength="18">
-                                            </form>
+                                            </form> 
                                             
                                         </div>
+                                        
+                                        <script>
+                                            var slideIndex = 1;
+                                            showDivs(slideIndex);
+
+                                            function plusDivs(n) {
+                                              showDivs(slideIndex += n);
+                                            }
+
+                                            function showDivs(n) {
+                                              var i;
+                                              var x = document.getElementsByClassName("charAvatar");
+                                              if (n > x.length) {slideIndex = 1}    
+                                              if (n < 1) {slideIndex = x.length}
+                                              for (i = 0; i < x.length; i++) {
+                                                 x[i].classList.add('not_visible');
+                                                 x[i].classList.remove('activeAvatar');
+                                              }
+                                              x[slideIndex-1].classList.remove('not_visible');
+                                              x[slideIndex-1].classList.add("activeAvatar");
+                                            }
+                                        </script>
 
                                         <div class="charCreationBtn disabled" id="charCreationScreen_next_Btn4">
                                             <a href="#" onclick="nextStep4()"><h3>Next step</h3></a>
@@ -289,8 +330,7 @@
                                             <h3>Are you sure you want to use this character?</h3>
                                             <div class="charCreateFinalBtns">
                                                 <button type="button" class="charCreateAttributeBtn" id="charCreateStartOver" onclick="">Change character</button>
-                                                <button type="button" class="charCreateAttributeBtn" id="charCreateStartGame" onclick="startGame()
-">Start game</button>
+                                                <button type="button" class="charCreateAttributeBtn" id="charCreateStartGame" onclick="startGame()">Start game</button>
                                             </div>
                                         </div>
                                     </div>
@@ -300,9 +340,13 @@
                             
                             <div class="" id="charCreationScreen_3">
                                 <div class="charCreationScreenMenu">
+                                    
                                     <div class="charCreationScreenAvatar">
-                                        <img src="../img/avatar/Figh73_L.BMP" id="charAvatar">
+                                        <div class="charCreationAvatarImg2">
+                                            <img src="../img/avatar/avatar-placeholder.png" class="charAvatar2" id="charAvatarPlaceholder">
+                                        </div>
                                     </div>
+                                    
                                     <div class="charCreationSummary">
                                         <h4>Character summary</h4>
                                         <ul>
@@ -310,8 +354,8 @@
                                             <li>Class: </li>
                                         </ul>
                                         <ul>
-                                            <li><span id="charSummaryGender"></span></li>
-                                            <li><span id="charSummaryClass"></span></li>
+                                            <li><span id="charSummaryGender">&nbsp;</span></li>
+                                            <li><span id="charSummaryClass">&nbsp;</span></li>
                                         </ul>
                                         <p>Attributes</p>
                                         <ul class="charCreationSummaryAtr">
@@ -322,11 +366,11 @@
                                             <li>Luck: </li>
                                         </ul>
                                         <ul class="charCreationSummaryAtr">
-                                            <li><span id="charSummaryStr"></span></li>
-                                            <li><span id="charSummaryCons"></span></li>
-                                            <li><span id="charSummaryDext"></span></li>
-                                            <li><span id="charSummaryInteli"></span></li>
-                                            <li><span id="charSummaryLuck"></span></li>
+                                            <li><span id="charSummaryStr">&nbsp;</span></li>
+                                            <li><span id="charSummaryCons">&nbsp;</span></li>
+                                            <li><span id="charSummaryDext">&nbsp;</span></li>
+                                            <li><span id="charSummaryInteli">&nbsp;</span></li>
+                                            <li><span id="charSummaryLuck">&nbsp;</span></li>
                                         </ul>
                                         <ul>
                                             <li>Name: </li>
