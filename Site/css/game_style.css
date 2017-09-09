@@ -773,6 +773,7 @@ div#charCreationScreen_2 ul li.charCreationBtn:hover {
 #charCreationFormName {
     display: block;
     float: none;
+    height: 75%;
 }
 
 .genderBtn,

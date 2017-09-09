@@ -69,7 +69,10 @@ var Hero = {
     constitution: "",
     dexterity: "",
     intelligence: "",
-    luck: "",    
+    luck: "",
+    level: "",
+    xp: "",
+    atrPoints: ""
 }
 
 
@@ -80,6 +83,28 @@ function createChar() {
 }
 
 function startGame() {
+    var Hname = document.getElementById('char_name');
+    var Hlevel = document.getElementById('char_lvl_span');
+    var Hclass = document.getElementById('char_class');
+    var Hxp = document.getElementById('char_xp_span');
+    var HatrPoints = document.getElementById('char_atr_points_span');
+    var Hstr = document.getElementById('str');
+    var Hcons = document.getElementById('cons');
+    var Hdext = document.getElementById('dext');
+    var Hinteli = document.getElementById('inteli');
+    var Hluck = document.getElementById('luck');
+    
+    Hero.level = "1";
+    Hero.xp = "0";
+    Hero.atrPoints = "0";
+    
+    
+    Hname.innerHTML = Hero.name;
+    Hlevel.innerHTML = Hero.level;
+    Hclass.innerHTML = Hero.class;
+    Hxp.innerHTML = Hero.xp;
+    Hxp.innerHTML = Hero.xp;
+    
     charCreationScreen.classList.add('hide');
     overlayWrapper.classList.add('hide');
 }
