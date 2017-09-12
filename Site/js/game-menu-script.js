@@ -71,8 +71,15 @@ var Hero = {
     intelligence: "",
     luck: "",
     level: "",
-    xp: "",
-    atrPoints: ""
+    neededxp: "",
+    currentxp: "",
+    atrPoints: "",
+    health: "",
+    currentHealth: "",
+    attack: "",
+    attackSpeed: "",
+    DPS: "",
+    armor: ""
 }
 
 
@@ -83,27 +90,105 @@ function createChar() {
 }
 
 function startGame() {
-    var Hname = document.getElementById('char_name');
-    var Hlevel = document.getElementById('char_lvl_span');
-    var Hclass = document.getElementById('char_class');
-    var Hxp = document.getElementById('char_xp_span');
-    var HatrPoints = document.getElementById('char_atr_points_span');
-    var Hstr = document.getElementById('str');
-    var Hcons = document.getElementById('cons');
-    var Hdext = document.getElementById('dext');
-    var Hinteli = document.getElementById('inteli');
-    var Hluck = document.getElementById('luck');
+
+    
+    var Hname = document.getElementsByClassName('char_name');
+    var Hlevel = document.getElementsByClassName('char_lvl_span');
+    var Hclass = document.getElementsByClassName('char_class');
+    var Hneededxp = document.getElementsByClassName('char_xp_span');
+    var Hcurrentxp = document.getElementsByClassName('char_xp_current_span');
+    var HatrPoints = document.getElementsByClassName('char_atr_points_span');
+    
+    var Hstr = document.getElementsByClassName('str');
+    var Hcons = document.getElementsByClassName('cons');
+    var Hdext = document.getElementsByClassName('dext');
+    var Hinteli = document.getElementsByClassName('inteli');
+    var Hluck = document.getElementsByClassName('luck');
     
     Hero.level = "1";
-    Hero.xp = "0";
+    Hero.neededxp = "100";
+    Hero.currentxp = "0";
     Hero.atrPoints = "0";
     
+    for (i = 0; i < Hname.length; ++i) {
+    Hname[i].innerHTML = Hero.name;
+    };
     
-    Hname.innerHTML = Hero.name;
-    Hlevel.innerHTML = Hero.level;
-    Hclass.innerHTML = Hero.class;
-    Hxp.innerHTML = Hero.xp;
-    Hxp.innerHTML = Hero.xp;
+    for (i = 0; i < Hlevel.length; ++i) {
+    Hlevel[i].innerHTML = Hero.level;
+    };
+    
+    for (i = 0; i < Hclass.length; ++i) {
+    Hclass[i].innerHTML = Hero.class;
+    };
+    
+    for (i = 0; i < Hneededxp.length; ++i) {
+    Hneededxp[i].innerHTML = Hero.neededxp;
+    };
+    
+    for (i = 0; i < Hcurrentxp.length; ++i) {
+    Hcurrentxp[i].innerHTML = Hero.currentxp;
+    };
+    
+    for (i = 0; i < HatrPoints.length; ++i) {
+    HatrPoints[i].innerHTML = Hero.atrPoints;
+    };
+    
+    
+    for (i = 0; i < Hstr.length; ++i) {
+    Hstr[i].innerHTML = Hero.strenght;
+    };
+    for (i = 0; i < Hcons.length; ++i) {
+    Hcons[i].innerHTML = Hero.constitution;
+    };
+    for (i = 0; i < Hdext.length; ++i) {
+    Hdext[i].innerHTML = Hero.dexterity;
+    };
+    for (i = 0; i < Hinteli.length; ++i) {
+    Hinteli[i].innerHTML = Hero.intelligence;
+    };
+    for (i = 0; i < Hluck.length; ++i) {
+    Hluck[i].innerHTML = Hero.luck;
+    };
+    
+    Hero.health = Hero.constitution * 40;
+    Hero.currentHealth = Hero.health;
+    Hero.attack = "10";
+    Hero.attackSpeed = "1";
+    Hero.DPS = Hero.attack * Hero.attackSpeed;
+    Hero.armor = "10";
+    
+    var Hhealth = document.getElementsByClassName('char_hp_stats');
+    var HcurrentHealth = document.getElementsByClassName('char_hp_stats_current');
+    var Hattack = document.getElementsByClassName('char_atk_nbr_dmg');
+    var HattackSpeed = document.getElementsByClassName('char_atk_nbr_speed');
+    var Hdps = document.getElementsByClassName('char_atk_nbr_dps');
+    var Harmor = document.getElementsByClassName('char_armor_nbr');
+    
+    for (i = 0; i < Hhealth.length; ++i) {
+    Hhealth[i].innerHTML = Hero.health;
+    };
+
+    for (i = 0; i < HcurrentHealth.length; ++i) {
+    HcurrentHealth[i].innerHTML = Hero.currentHealth;
+    };
+    
+    for (i = 0; i < Hattack.length; ++i) {
+    Hattack[i].innerHTML = Hero.attack;
+    };
+    
+    for (i = 0; i < HattackSpeed.length; ++i) {
+    HattackSpeed[i].innerHTML = Hero.attackSpeed;
+    };
+    
+    for (i = 0; i < Hdps.length; ++i) {
+    Hdps[i].innerHTML = Hero.DPS;
+    };
+    
+    for (i = 0; i < Harmor.length; ++i) {
+    Harmor[i].innerHTML = Hero.armor;
+    };
+    
     
     charCreationScreen.classList.add('hide');
     overlayWrapper.classList.add('hide');
@@ -211,6 +296,10 @@ function saveStats() {
         savedStats.dext = shownDext.innerHTML;
         savedStats.inteli = shownInteli.innerHTML;
         savedStats.luck = shownLuck.innerHTML;
+    
+        var loadBtn = document.getElementById('charAtribload');
+        loadBtn.setAttribute( "onClick", "loadStats()" )
+        loadBtn.classList.remove('inactive');
 }
 
 function loadStats() {
@@ -267,6 +356,11 @@ function nextStep4() {
     charCreationFinal.classList.remove('hidden2');
 }
 
+function restartCharCreation() {
+    charCreationFinal.classList.add('hidden2');
+    charCreationGender.classList.remove('hidden2');
+}
+
 
 
 function audioFadeIn(track) {
@@ -313,5 +407,4 @@ var fadeout = setInterval(
     }
   }, interval);
 };
-
 

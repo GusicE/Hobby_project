@@ -244,7 +244,7 @@
                                             <div class="charCreateAttributeBtns">
                                                 <button type="button" class="charCreateAttributeBtn" id="charAtribreroll" onclick="rerollStats()">Reroll stats</button>
                                                 <button type="button" class="charCreateAttributeBtn" id="charAtribsave" onclick="saveStats()">Save stats</button>
-                                                <button type="button" class="charCreateAttributeBtn" id="charAtribload" onclick="loadStats()">Load stats</button>
+                                                <button type="button" class="charCreateAttributeBtn inactive" id="charAtribload">Load stats</button>
                                             </div>
                                             
                                         </div> 
@@ -329,8 +329,8 @@
                                         <div class="charCreationWrapper">
                                             <h3>Are you sure you want to use this character?</h3>
                                             <div class="charCreateFinalBtns">
-                                                <button type="button" class="charCreateAttributeBtn" id="charCreateStartOver" onclick="">Change character</button>
-                                                <button type="button" class="charCreateAttributeBtn" id="charCreateStartGame" onclick="startGame()">Start game</button>
+                                                <button type="button" class="charCreateAttributeBtn" id="charCreateStartOver" onclick="restartCharCreation()">Change character</button>
+                                                <button type="button" class="charCreateAttributeBtn" id="charCreateStartGame" onclick="startGame(); playGame();">Start game</button>
                                             </div>
                                         </div>
                                     </div>
@@ -387,8 +387,8 @@
                 
                 </div>
                 
-				<div class="col-9">
-				    <canvas id="background">
+				<div class="col-9" id="canvasWrapper">
+				    <canvas id="gameCanvas" width="200" height="200">>
                         Your browser does not support canvas. Please try again with a different browser.
                     </canvas>
 				</div>
@@ -398,14 +398,14 @@
                         <div class="char_menu">
                             <h2 class="ingame_menu_name">Character</h2>
                             <div class="character">
-                                <h3 id="char_name">Harry Potter</h3>
-                                <h4 id="char_lvl">Level: <span id="char_lvl_span">12</span></h4>
-                                <h3 id="char_class">Knight</h3>
-                                <h4 id="char_xp">XP: <span id="char_xp_span">26.500</span></h4>
+                                <h3 class="char_name">&nbsp;</h3>
+                                <h4 id="char_lvl">Level: <span class="char_lvl_span">1</span></h4>
+                                <h3 class="char_class">&nbsp;</h3>
+                                <h4 id="char_xp">XP: <span class="char_xp_current_span">0</span></h4>
                             </div>
                             <div class="char_attributes">
                                 <h3>Attributes</h3>
-                                <h4 id="char_atr_points"><span id="char_atr_points_span">2</span> Points Available</h4>
+                                <h4 id="char_atr_points"><span class="char_atr_points_span">0</span> Points Available</h4>
                                 <ul id="char_atr_list">
                                     <li>Strength</li>
                                     <li>Constitution</li>
@@ -414,18 +414,18 @@
                                     <li>Luck</li>
                                 </ul>
                                 <ul id="char_atr_list_nr">
-                                    <li id="str">24</li>
-                                    <li id="cons">26</li>
-                                    <li id="dext">18</li>
-                                    <li id="inteli">16</li>
-                                    <li id="luck">12</li>
+                                    <li class="str">&nbsp;</li>
+                                    <li class="cons">&nbsp;</li>
+                                    <li class="dext">&nbsp;</li>
+                                    <li class="inteli">&nbsp;</li>
+                                    <li class="luck">&nbsp;</li>
                                 </ul>
                             </div>
                             <div class="char_hp_xp">
                                 <h4 id="char_hp">Health</h4>
-                                <div class="char_hp_bar"><h4 id="char_hp_stats"><span id="char_hp_stats_current">945</span> / 945</h4></div>
+                                <div class="char_hp_bar"><h4><span class="char_hp_stats_current">945</span> / <span class="char_hp_stats">945</span></h4></div>
                                 <h4 id="char_xp">Experience</h4>
-                                <div class="char_xp_bar"><h4 id="char_xp_stats"><span id="char_xp_stats_current">6200</span> / 8000</h4></div>
+                                <div class="char_xp_bar"><h4><span class="char_xp_current_span">0</span> / <span class="char_xp_span">100</span></h4></div>
                             </div>
                             <div class="char_atk_def_stats">
                                 <div class="char_atk_stats">
@@ -436,9 +436,9 @@
                                         <li>Damage per Second (DPS)</li>
                                     </ul>
                                     <ul id="char_atk_nbr">
-                                        <li><span id="char_atk_nbr_dmg">45</span></li>
-                                        <li><span id="char_atk_nbr_speed">130%</span></li>
-                                        <li><span id="char_atk_nbr_dps">58</span></li>
+                                        <li><span class="char_atk_nbr_dmg">10</span></li>
+                                        <li><span class="char_atk_nbr_speed">100%</span></li>
+                                        <li><span class="char_atk_nbr_dps">10</span></li>
                                     </ul>
                                 </div>
                                 <div class="char_def_stats">
@@ -447,7 +447,7 @@
                                         <li>Armor</li>
                                     </ul>
                                     <ul id="char_armor_nbr">
-                                        <li id="char_armor_name_span"><span>151</span></li>
+                                        <li><span class="char_armor_nbr">10</span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -463,9 +463,10 @@
                         <div class="map_menu">
                             <h2 class="ingame_menu_name">Map</h2>
                             <div class="character map">
-                                <h3 id="char_name">Harry Potter</h3>
-                                <h4 id="char_lvl">Level: <span>12</span></h4>
-                                <h3 id="map_dungeon_lvl">Dungeon level: <span>4</span></h3>
+                                <h3 class="char_name">&nbsp;</h3>
+                                <h4 id="char_lvl">Level: <span class="char_lvl_span">1</span></h4>
+                                <h3 id="map_dungeonlvl">Dungeon level: <span class="map_dungeonlvl_span">1</span></h3>
+                                <h4 id="char_xp">XP: <span class="char_xp_current_span">0</span></h4>
                             </div>
                             <div class="map_img">
                                 <img src="../img/Game/map.jpg">
@@ -482,10 +483,10 @@
                         <div class="inv_menu">
                             <h2 class="ingame_menu_name">Inventory</h2>
                             <div class="character">
-                                <h3 id="char_name">Harry Potter</h3>
-                                <h4 id="char_lvl">Level: <span>12</span></h4>
-                                <h3 id="char_class">Knight</h3>
-                                <h4 id="char_xp">XP: <span>26.500</span></h4>
+                                <h3 class="char_name">&nbsp;</h3>
+                                <h4 id="char_lvl">Level: <span class="char_lvl_span">1</span></h4>
+                                <h3 class="char_class">&nbsp;</h3>
+                                <h4 id="char_xp">XP: <span class="char_xp_current_span">0</span></h4>
                             </div>
                             <div class="inv_equipment">
                                 <div class="inv_equipment_slot" id="inv_equipment_helm">
@@ -904,6 +905,7 @@
 		</div>
 
 		<script src="../js/game-menu-script.js"></script>
+        <script src="../js/game2.js"></script>
 	</body>
 
 </html>
